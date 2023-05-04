@@ -52,7 +52,7 @@ function getCountImage({ count = 0, theme = "moebooru", length = 7 }) {
 
   return `<?xml version="1.0" encoding="UTF-8"?>
     <svg width="${x}" height="${y}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="image-rendering: pixelated;">
-      <title>Moe Count</title><g>${parts}</g>
+      <title>Access Count</title><g>${parts}</g>
     </svg>`;
 }
 
@@ -66,7 +66,7 @@ export default async function handler(
     "max-age=0, no-cache, no-store, must-revalidate"
   );
   const { name, theme = "moebooru", length = 7 } = req.query;
-  const views = name ? await kv.incr("views") : "0123456";
+  const views = name ? await kv.incr(name as string) : "0123456";
   console.log("🚀🚀🚀 / views:", name, theme, length, views);
   res.send(
     getCountImage({
