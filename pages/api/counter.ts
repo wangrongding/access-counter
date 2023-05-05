@@ -11,7 +11,7 @@ export const config = {
 };
 
 interface CountOptions {
-  count?: number;
+  count?: string;
   theme?: string;
   length?: number;
   name?: string;
@@ -44,7 +44,7 @@ fs.readdirSync(themePath).forEach((theme) => {
 });
 
 export function getCountImage({
-  count = 0,
+  count = "0",
   theme = "001",
   length = 7,
 }: CountOptions) {
@@ -67,15 +67,20 @@ export function getCountImage({
   </svg>`;
 }
 
-export async function getMultipleCount({ name, length }: CountOptions) {
-  const views = name ? await kv.incr(name) : "0123456";
-  const themeList = [""];
-  // return getCountImage({ count: Number(views), theme, length });
+export function getMultipleImgList() {
+  const themeList = ["001", "002", "003", "004", "005", "006"];
+  const imgList = themeList.map((theme) => {
+    const countImg = getCountImage({ count: "0123456789", theme, length: 10 });
+    const encodedString = btoa(countImg);
+    const dataURI = `data:image/svg+xml;base64,${encodedString}`;
+    return dataURI;
+  });
+  return imgList;
 }
 export async function getCount({ name, theme, length }: CountOptions) {
   const views = name ? await kv.incr(name) : "0123456";
   console.log("🚀🚀🚀 / views:", name, theme, length, views);
-  return getCountImage({ count: Number(views), theme, length });
+  return getCountImage({ count: views.toString(), theme, length });
 }
 
 export default async function handler(

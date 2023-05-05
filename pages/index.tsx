@@ -1,22 +1,23 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
-import { getCount } from "./api/counter";
+import { getCount, getMultipleImgList } from "./api/counter";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
 interface Props {
-  countImg: any;
+  countImg: string;
+  imgList: string[];
 }
 
-export default function Home({ countImg }: Props) {
+export default function Home({ countImg, imgList }: Props) {
   const [text, setText] = useState("");
   const baseUrl = "access-counter.vercel.app/api/counter?name=github-username";
 
   return (
     <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
+      className={`flex min-h-screen flex-col items-center justify-between p-16 ${inter.className}`}
     >
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
         <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
@@ -46,29 +47,57 @@ export default function Home({ countImg }: Props) {
         <Image
           className=""
           src={countImg}
-          alt="Next.js Logo"
+          alt="count img"
           width={300}
           height={50}
           priority
         />
       </div>
 
-      <div className="mb-32 lg:text-left flex gap-4 flex-col">
+      {/* 点击展开查看详情 */}
+      <details className="border-1 p-4 m-4">
+        <summary className="cursor-pointer select-none">
+          点击查看其他主题
+        </summary>
+        <div className="grid gap-4 grid-cols-2">
+          {imgList.map((item: any, index: number) => {
+            return (
+              <Image
+                className=""
+                key={index}
+                src={item}
+                alt="count img"
+                width={400}
+                height={50}
+                priority
+              />
+            );
+          })}
+        </div>
+      </details>
+
+      <div className="lg:text-left flex gap-4 flex-col">
         <h2 className=" font-bold text-xl">How to use:</h2>
         <p>
-          <span className="font-bold mr-4 w-[150px] inline-block">SVG address:</span>
+          <span className="font-bold mr-4 w-[150px] inline-block">
+            SVG address:
+          </span>
           <span className=" bg-slate-300 rounded p-2 w-[700px] inline-block ">
             {` ${baseUrl}?name=github-username`}
           </span>
         </p>
         <p>
-          <span className="font-bold mr-4 w-[150px] inline-block">Img tag:</span>
+          <span className="font-bold mr-4 w-[150px] inline-block">
+            Img tag:
+          </span>
           <span className=" bg-slate-300 rounded p-2 w-[700px] inline-block ">
             {` <img src="${baseUrl}" />`}
           </span>
         </p>
         <p>
-          <span className="font-bold mr-4 w-[150px] inline-block">Markdown:</span>
+          <span className="font-bold mr-4 w-[150px] inline-block">
+            Markdown:
+          </span>
           <span className=" bg-slate-300 rounded p-2 w-[700px] inline-block ">
             {`![](${baseUrl})`}
           </span>
@@ -90,6 +119,7 @@ export const getStaticProps: GetStaticProps = async ({
   const encodedString = btoa(countImg);
   const dataURI = `data:image/svg+xml;base64,${encodedString}`;
 
+  const imgList = getMultipleImgList();
   // const encoder = new TextEncoder();
   // const data = encoder.encode(countImg);
   // const base64 = btoa(String.fromCharCode(...new Uint8Array(data)));
@@ -98,6 +128,7 @@ export const getStaticProps: GetStaticProps = async ({
   return {
     props: {
       countImg: dataURI,
+      imgList: imgList,
     },
     revalidate: 10,
   };
