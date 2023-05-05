@@ -29,19 +29,19 @@ Demo: 点击：[→ 查看示例](https://github.com/wangrongding)
 SVG address:
 
 ```
-access-counter.vercel.app/api/counter?name=github-username
+https://access-counter.vercel.app/api/counter?name=github-username
 ```
 
 Img tag:
 
 ```html
-<img src="access-counter.vercel.app/api/counter?name=github-username" />
+<img src="https://access-counter.vercel.app/api/counter?name=github-username" />
 ```
 
 Markdown:
 
 ```markdown
-![](access-counter.vercel.app/api/counter?name=github-username)
+![](https://access-counter.vercel.app/api/counter?name=github-username)
 ```
 
 | 请求参数 | -                  |
@@ -53,7 +53,7 @@ Markdown:
 默认：
 
 ```
-access-counter.vercel.app/api/counter?name=github-username?name=access-counter&theme=001&length=7
+https://access-counter.vercel.app/api/counter?name=access-counter&theme=001&length=7
 ```
 
 ### One-Click Deploy
