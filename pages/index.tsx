@@ -13,7 +13,7 @@ interface Props {
 
 export default function Home({ countImg, imgList }: Props) {
   const [text, setText] = useState("");
-  const baseUrl = "access-counter.vercel.app/api/counter?name=github-username";
+  const baseUrl = "https://access-counter.vercel.app/api/counter?name=github-username";
 
   return (
     <main
