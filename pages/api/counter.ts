@@ -10,6 +10,13 @@ export const config = {
   runtime: "nodejs", // edge | nodejs
 };
 
+interface CountOptions {
+  count?: number;
+  theme?: string;
+  length?: number;
+  name?: string;
+}
+
 const themePath = path.resolve(".", "theme");
 const themeList: any = {};
 
@@ -36,8 +43,12 @@ fs.readdirSync(themePath).forEach((theme) => {
   });
 });
 
-function getCountImage({ count = 0, theme = "moebooru", length = 7 }) {
-  if (!(theme in themeList)) theme = "moebooru";
+export function getCountImage({
+  count = 0,
+  theme = "001",
+  length = 7,
+}: CountOptions) {
+  if (!(theme in themeList)) theme = "001";
   // This is not the greatest way for generating an SVG but it'll do for now
   const countArray = count.toString().padStart(length, "0").split("");
   let x = 0,
@@ -51,9 +62,20 @@ function getCountImage({ count = 0, theme = "moebooru", length = 7 }) {
   }, "");
 
   return `<?xml version="1.0" encoding="UTF-8"?>
-    <svg width="${x}" height="${y}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="image-rendering: pixelated;">
-      <title>Access Count</title><g>${parts}</g>
-    </svg>`;
+  <svg width="${x}" height="${y}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="image-rendering: pixelated;">
+  <title>Access Count</title><g>${parts}</g>
+  </svg>`;
+}
+
+export async function getMultipleCount({ name, length }: CountOptions) {
+  const views = name ? await kv.incr(name) : "0123456";
+  const themeList = [""];
+  // return getCountImage({ count: Number(views), theme, length });
+}
+export async function getCount({ name, theme, length }: CountOptions) {
+  const views = name ? await kv.incr(name) : "0123456";
+  console.log("🚀🚀🚀 / views:", name, theme, length, views);
+  return getCountImage({ count: Number(views), theme, length });
 }
 
 export default async function handler(
@@ -65,13 +87,12 @@ export default async function handler(
     "cache-control",
     "max-age=0, no-cache, no-store, must-revalidate"
   );
-  const { name, theme = "moebooru", length = 7 } = req.query;
-  const views = name ? await kv.incr(name as string) : "0123456";
-  console.log("🚀🚀🚀 / views:", name, theme, length, views);
-  res.send(
-    getCountImage({
-      count: Number(views),
-      theme: theme as string,
-    })
-  );
+  const { name, theme = "001", length = 7 } = req.query;
+
+  const count = await getCount({
+    name: name?.toString(),
+    theme: theme?.toString(),
+    length: Number(length),
+  });
+  res.send(count);
 }
