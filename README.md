@@ -18,6 +18,12 @@
 
 Demo: 点击：[→ 查看示例](https://github.com/wangrongding)
 
+<p align="center">
+  <a href="https://github.com/wangrongding" target="_blank" rel="noopener noreferrer">
+    <img width="800" src="https://raw.githubusercontent.com/wangrongding/image-house/master/202305051509482.png" alt="access-counter">
+  </a>
+</p>
+
 在你的 github profile 中插入 img 或者 markdown 即可。
 
 SVG address:
