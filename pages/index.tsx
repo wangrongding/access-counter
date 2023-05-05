@@ -13,7 +13,8 @@ interface Props {
 
 export default function Home({ countImg, imgList }: Props) {
   const [text, setText] = useState("");
-  const baseUrl = "https://access-counter.vercel.app/api/counter?name=github-username";
+  const baseUrl =
+    "https://access-counter.vercel.app/api/counter?name=github-username";
 
   return (
     <main
@@ -92,7 +93,7 @@ export default function Home({ countImg, imgList }: Props) {
             SVG address:
           </span>
           <span className=" bg-slate-300 rounded p-2 w-[700px] inline-block ">
-            {` ${baseUrl}?name=github-username`}
+            {` ${baseUrl}`}
           </span>
         </p>
         <p>
@@ -109,6 +110,26 @@ export default function Home({ countImg, imgList }: Props) {
           </span>
           <span className=" bg-slate-300 rounded p-2 w-[700px] inline-block ">
             {`![](${baseUrl})`}
+          </span>
+        </p>
+        <p>
+          <span className="font-bold mr-4 w-[150px] inline-block">
+            请求参数：
+          </span>
+          <span className=" bg-slate-300 rounded mr-2 p-2">
+            name :github 用户名
+          </span>
+          <span className=" bg-slate-300 rounded mr-2 p-2">
+            theme: 主题（001-006）
+          </span>
+          <span className=" bg-slate-300 rounded mr-2 p-2">
+            length:长度（显示几个图）
+          </span>
+        </p>
+        <p>
+          <span className="font-bold mr-4 w-[150px] inline-block">默认：</span>
+          <span className=" bg-slate-300 rounded mr-2 p-2">
+            {"https://access-counter.vercel.app/api/counter?name=access-counter&theme=001&length=7"}
           </span>
         </p>
         <p className="bg-amber-200 rounded px-2">
