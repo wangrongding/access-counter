@@ -14,11 +14,11 @@
 
 [access-counter](https://access-counter.vercel.app/)
 
-## Demo
-
-点击：[→ 查看示例](https://github.com/wangrongding)
-
 ## How to Use
+
+Demo: 点击：[→ 查看示例](https://github.com/wangrongding)
+
+在你的 github profile 中插入 img 或者 markdown 即可。
 
 SVG address:
 
@@ -51,6 +51,8 @@ access-counter.vercel.app/api/counter?name=github-username?name=access-counter&t
 ```
 
 ### One-Click Deploy
+
+目前使用的是免费的 `Vercel KV for Redis`，每天只有 3000 次请求，你可以将此项目自己部署到 `vercel` ，参考下面的步骤。(待完善...)
 
 Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=vercel-examples):
 
