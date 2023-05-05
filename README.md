@@ -58,11 +58,14 @@ https://access-counter.vercel.app/api/counter?name=access-counter&theme=001&leng
 
 ### One-Click Deploy
 
-目前使用的是免费的 `Vercel KV for Redis`，每天只有 3000 次请求，你可以将此项目自己部署到 `vercel` ，参考下面的步骤。(待完善...)
+目前使用的是免费的 `Vercel KV for Redis`，每天只有 3000 次请求，你可以将此项目自己部署到 `vercel` ，点击下面按钮，快速部署。
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=vercel-examples):
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fwangrongding%2Faccess-counter%26project-name%3Daccess-counter%26repository-name%3Daccess-counter%26demo-title%3DGithub%20profile%20access%20counter%26demo-description%3D%E4%B8%80%E4%B8%AA%20github%20profile%20%E8%AE%BF%E9%97%AE%E8%AE%A1%E6%95%B0%E5%99%A8.%26demo-url%3Dhttps%3A%2F%2Faccess-counter.vercel.app%2F%26demo-image%3Dhttps%3A%2F%2Faccess-counter.vercel.app%2Fsite.png%26stores%3D%5B%7B%22type%22%3A%22kv%22%7D%5D)
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fexamples%2Ftree%2Fmain%2Fstorage%2Fkv-redis-starter&project-name=kv-redis-starter&repository-name=kv-redis-starter&demo-title=Vercel%20KV%20for%20Redis%20Next.js%20Starter&demo-description=Simple%20Next.js%20template%20that%20uses%20Vercel%20KV%20for%20Redis%20to%20track%20pageviews.&demo-url=https%3A%2F%2Fkv-redis-starter.vercel.app%2F&demo-image=https%3A%2F%2Fkv-redis-starter.vercel.app%2Fopengraph-image.png&stores=%5B%7B"type"%3A"kv"%7D%5D)
+设置好名称后，创建一个 KV Database
+![](https://raw.githubusercontent.com/wangrongding/image-house/master/202305051754046.png)
+
+然后就可以了。
 
 ### Clone and Deploy
 
@@ -83,6 +86,8 @@ cp .env.example .env.local
 ```
 
 Then open `.env.local` and set the environment variables to match the ones in your Vercel Storage Dashboard.
+
+![](https://raw.githubusercontent.com/wangrongding/image-house/master/202305051751071.png)
 
 Next, run Next.js in development mode:
 
