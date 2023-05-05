@@ -1,29 +1,54 @@
----
-name: Vercel KV for Redis Next.js Starter
-slug: kv-redis-starter
-description: Simple Next.js template that uses Vercel KV for Redis to track pageviews.
-framework: Next.js
-useCase: Starter
-css: Tailwind
-database: Vercel KV
-deployUrl: https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fexamples%2Ftree%2Fmain%2Fstorage%2Fkv-redis-starter&project-name=kv-redis-starter&repository-name=kv-redis-starter&demo-title=Vercel%20KV%20for%20Redis%20Next.js%20Starter&demo-description=Simple%20Next.js%20template%20that%20uses%20Vercel%20KV%20for%20Redis%20to%20track%20pageviews.&demo-url=https%3A%2F%2Fkv-redis-starter.vercel.app%2F&demo-image=https%3A%2F%2Fkv-redis-starter.vercel.app%2Fopengraph-image.png&stores=%5B%7B"type"%3A"kv"%7D%5D
-demoUrl: https://kv-redis-starter.vercel.app/
-relatedTemplates:
-  - blob-starter
-  - postgres-starter
----
+# Access Counter
 
-# Vercel KV for Redis Next.js Starter
+<p align="center">
+  <a href="https://github.com/wangrongding" target="_blank" rel="noopener noreferrer">
+    <img width="800" src="https://raw.githubusercontent.com/wangrongding/image-house/master/202305051430286.png" alt="access-counter">
+  </a>
+</p>
 
-Simple Next.js template that uses [Vercel KV for Redis](https://vercel.com/kv) to track pageviews.
+> 一个 github profile 访问计数器，基于 moe-counter。
+
+使用 [Vercel KV for Redis](https://vercel.com/kv) 记录浏览量。
+
+## Website
+
+[access-counter](https://access-counter.vercel.app/)
 
 ## Demo
 
-https://kv-redis-starter.vercel.app/
+点击：[→ 查看示例](https://github.com/wangrongding)
 
 ## How to Use
 
-You can choose from one of the following two methods to use this repository:
+SVG address:
+
+```
+access-counter.vercel.app/api/counter?name=github-username?name=github-username
+```
+
+Img tag:
+
+```html
+<img src="access-counter.vercel.app/api/counter?name=github-username" />
+```
+
+Markdown:
+
+```markdown
+![](access-counter.vercel.app/api/counter?name=github-username)
+```
+
+| 请求参数 | -                  |
+| -------- | ------------------ |
+| name     | github 用户名      |
+| theme    | 主题（001-006）    |
+| length   | 长度（显示几个图） |
+
+默认：
+
+```
+access-counter.vercel.app/api/counter?name=github-username?name=access-counter&theme=001&length=7
+```
 
 ### One-Click Deploy
 
@@ -33,13 +58,17 @@ Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_mediu
 
 ### Clone and Deploy
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [pnpm](https://pnpm.io/installation) to bootstrap the example:
+Clone the repository:
 
 ```bash
-pnpm create next-app --example https://github.com/vercel/examples/tree/main/storage/kv-redis-starter
+git clone
 ```
 
-Once that's done, copy the .env.example file in this directory to .env.local (which will be ignored by Git):
+Install the dependencies:
+
+```bash
+pnpm install
+```
 
 ```bash
 cp .env.example .env.local
