@@ -87,7 +87,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  res.setHeader("content-type", "image/svg+xml");
+  res.setHeader("content-type", "image/svg+xml; charset=utf-8");
   res.setHeader(
     "cache-control",
     "max-age=0, no-cache, no-store, must-revalidate"

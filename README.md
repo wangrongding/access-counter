@@ -23,7 +23,7 @@
 SVG address:
 
 ```
-access-counter.vercel.app/api/counter?name=github-username?name=github-username
+access-counter.vercel.app/api/counter?name=github-username
 ```
 
 Img tag:
