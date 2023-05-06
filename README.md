@@ -81,11 +81,31 @@ Install the dependencies:
 pnpm install
 ```
 
+Install Vercel CLI:
+
 ```bash
-cp .env.example .env.local
+pnpm i -g vercel
 ```
 
-Then open `.env.local` and set the environment variables to match the ones in your Vercel Storage Dashboard.
+Link your project to Vercel:
+
+```bash
+vercel link
+```
+
+Download your KV environment variables:
+
+```bash
+vercel env pull .env.development.local
+```
+
+![](https://raw.githubusercontent.com/wangrongding/image-house/master/202305061013955.png)
+
+Or open `.env.development.local` and set the environment variables to match the ones in
+
+```bash
+cp .env.example .env.development.local
+```
 
 ![](https://raw.githubusercontent.com/wangrongding/image-house/master/202305051751071.png)
 
